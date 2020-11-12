@@ -1,11 +1,11 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Search = () => {
   return (
     <div>
       <Helmet>
-        <title>Unsplash Clone - Search</title>
+        <title>{`${process.env.REACT_APP_TITLE} - Search`}</title>
       </Helmet>
     </div>
   );
