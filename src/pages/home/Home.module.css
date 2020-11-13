@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
 }
@@ -13,11 +12,23 @@
   height: 100%;
 }
 
-.shadow {
+.homePagePhoto {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, 0));
+}
+
+.homePageSearch {
+  position: relative;
+  z-index: 2;
+  margin-top: 300px;
+  width: 60%;
+}
+
+@media (max-width: 920px) {
+  .homePageSearch {
+    width: 90%;
+  }
 }

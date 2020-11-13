@@ -1,0 +1,38 @@
+.search form {
+  position: relative;
+}
+
+.search input {
+  color: #505050;
+  width: 100%;
+  border: 0;
+  border-radius: 3px;
+  outline: none;
+  padding: 20px 50px 20px 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all ease 0.2s;
+}
+
+.search input:focus {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  cursor: pointer;
+  color: #505050;
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.submit {
+  left: 0;
+  width: 60px;
+}
+
+.reset {
+  right: 0;
+  width: 50px;
+}

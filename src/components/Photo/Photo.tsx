@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PhotoType } from 'types/photo';
 import styles from 'components/Photo/Photo.module.css';
-import { decode } from 'blurhash';
+import { Blurhash } from 'react-blurhash';
 import { useSpring, animated } from 'react-spring/web';
 
 type PhotoPropsType = {
@@ -10,32 +10,35 @@ type PhotoPropsType = {
 
 const Photo: React.FunctionComponent<PhotoPropsType> = ({ photo }) => {
   const [isLoaded, setLoaded] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const pixels = decode(photo.blur_hash, 300, 150);
   const props = useSpring({ opacity: isLoaded ? 1 : 0 });
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      const imageData = ctx?.createImageData(300, 150);
-      if (imageData && ctx) {
-        imageData.data.set(pixels);
-        ctx.putImageData(imageData, 0, 0);
-      }
-    }
-  }, [pixels]);
 
   return (
     <div className={styles.photo}>
-      <canvas ref={canvasRef}></canvas>
+      <Blurhash
+        hash={photo.blur_hash}
+        width="100%"
+        height="100%"
+        resolutionX={32}
+        resolutionY={32}
+        punch={1}
+      />
       <picture>
-        <source media="(max-width: 200px)" srcSet={photo.urls.thumb} />
-        <source media="(max-width: 400px)" srcSet={photo.urls.small} />
+        <source
+          media="(max-width: 200px)"
+          srcSet={`${photo.urls.raw}"&w=600, ${photo.urls.raw}"&w=600&dpr=2 2x`}
+        />
+        <source
+          media="(max-width: 400px)"
+          srcSet={`${photo.urls.raw}"&w=800, ${photo.urls.raw}"&w=800&dpr=2 2x`}
+        />
+        <source
+          media="(min-width: 400px)"
+          srcSet={`${photo.urls.raw}"&w=1080, ${photo.urls.raw}"&w=1080&dpr=2 2x`}
+        />
         <animated.img
           style={props}
           onLoad={() => setLoaded(true)}
-          src={photo.urls.regular}
+          src={`${photo.urls.raw}&w=1080`}
           alt={photo.description || photo.alt_description}
         />
       </picture>

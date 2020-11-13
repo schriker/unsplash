@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.photo > div {
+  display: block !important;
+}
+
 .photo canvas {
   display: block;
   width: 100%;

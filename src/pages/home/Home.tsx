@@ -4,6 +4,7 @@ import styles from 'pages/home/Home.module.css';
 import randomPhoto from 'api/randomPhoto';
 import { PhotoType } from 'types/photo';
 import Photo from 'components/Photo/Photo';
+import Search from 'components/Search/Search';
 
 const Home = () => {
   const [backgroundPhoto, setBackgroundPhoto] = useState<PhotoType | null>(
@@ -24,14 +25,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div
-      className={styles.homePage}
-      style={{ backgroundColor: backgroundPhoto ? backgroundPhoto.color : '' }}
-    >
+    <div className={styles.homePage}>
       <Helmet>
         <title>{`${process.env.REACT_APP_TITLE} - Home`}</title>
       </Helmet>
-      {backgroundPhoto && <Photo photo={backgroundPhoto} />}
+      {backgroundPhoto && (
+        <div className={styles.homePagePhoto}>
+          <Photo photo={backgroundPhoto} />
+        </div>
+      )}
+      <div className={styles.homePageSearch}>
+        <Search />
+      </div>
     </div>
   );
 };
