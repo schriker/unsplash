@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from 'pages/home/Home';
-import Search from 'pages/search/Search';
+import HomePage from 'pages/home/HomePage';
+import SearchPage from 'pages/search/SearchPage';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -10,10 +10,10 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/search/:query">
-            <Search />
+            <SearchPage />
           </Route>
           <Route path="/">
-            <Home />
+            <HomePage />
           </Route>
         </Switch>
       </Router>

@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import styles from 'pages/home/Home.module.css';
 import randomPhoto from 'api/randomPhoto';
 import { PhotoType } from 'types/photo';
-import Photo from 'components/Photo/Photo';
+import PhotoBackground from 'components/PhotoBackground/PhotoBackground';
 import Search from 'components/Search/Search';
 
-const Home = () => {
+const HomePage = () => {
   const [backgroundPhoto, setBackgroundPhoto] = useState<PhotoType | null>(
     null
   );
@@ -31,14 +31,18 @@ const Home = () => {
       </Helmet>
       {backgroundPhoto && (
         <div className={styles.homePagePhoto}>
-          <Photo photo={backgroundPhoto} />
+          <PhotoBackground photo={backgroundPhoto} />
         </div>
       )}
       <div className={styles.homePageSearch}>
+        <h1>Unsplash</h1>
+        <p>The internet’s source of freely-usable images.</p>
+        <p>Powered by creators everywhere.</p>
         <Search />
+      {backgroundPhoto && <p>Photo of the Day by {backgroundPhoto.user.name}</p>}
       </div>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

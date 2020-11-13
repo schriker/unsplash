@@ -1,0 +1,15 @@
+.wrapper { 
+  position: relative;
+}
+
+.wrapper > div {
+  top: 0;
+  left: 0;
+  position: absolute !important;
+  margin: 0;
+}
+
+.wrapper img {
+  position: relative;
+  z-index: 999;
+}

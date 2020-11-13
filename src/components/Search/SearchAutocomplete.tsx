@@ -5,10 +5,12 @@ import { Autocomplete } from 'types/api';
 
 type SearchAutocompletePropsType = {
   autocomplete: Autocomplete[];
+  clearForm: () => void;
 };
 
 const SearchAutocomplete: React.FunctionComponent<SearchAutocompletePropsType> = ({
   autocomplete,
+  clearForm,
 }) => {
   return (
     <div className={styles.autocomplete}>
@@ -16,7 +18,7 @@ const SearchAutocomplete: React.FunctionComponent<SearchAutocompletePropsType> =
         <ul>
           {autocomplete.map((item, index) => {
             return (
-              <li key={index}>
+              <li key={index} onClick={clearForm}>
                 <Link to={`/search/${item.query}`}>{item.query}</Link>
               </li>
             );

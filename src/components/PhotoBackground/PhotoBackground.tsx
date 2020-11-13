@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PhotoType } from 'types/photo';
-import styles from 'components/Photo/Photo.module.css';
+import styles from 'components/PhotoBackground/PhotoBackground.module.css';
 import { Blurhash } from 'react-blurhash';
 import { useSpring, animated } from 'react-spring/web';
 

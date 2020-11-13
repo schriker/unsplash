@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 0 100px;
+}
+
+.wrapper h1 {
+  color: #1a1a1a;
+  margin: 25px 0;
+  padding: 25px 0;
+  text-transform: capitalize;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.grid {
+  column-count: 3;
+  column-gap: 25px;
+}
+
+.grid div {
+  margin-bottom: 25px;
+}
+
+.grid div img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

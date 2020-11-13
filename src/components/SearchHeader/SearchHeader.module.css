@@ -1,0 +1,34 @@
+.search {
+  position: relative;
+  padding: 50px 50px 90px 50px;
+}
+
+.search img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.searchMainPhoto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backButton {
+  font-size: 25px;
+  color: #fff;
+  top: 30px;
+  position: absolute;
+  z-index: 999;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.backButton:hover {
+  transform: translate(-5px, 0);
+}

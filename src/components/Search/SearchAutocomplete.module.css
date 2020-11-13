@@ -1,5 +1,6 @@
 .autocomplete {
-  position: relative;
+  position: absolute;
+  top: 65px;
   z-index: 5;
   width: 100%;
   background-color: #fff;
@@ -9,12 +10,12 @@
 
 .autocomplete ul {
   margin: 10px 0;
-  padding: 10px 0;
+  padding: 0;
   list-style: none;
 }
 
 .autocomplete a {
-  color: #505050;
+  color: #848484;
   display: block;
   padding: 10px 15px;
   text-decoration: none;
@@ -30,5 +31,5 @@
   padding: 30px 0;
   font-size: 14px;
   text-align: center;
-  color: #505050;
+  color: #848484;
 }

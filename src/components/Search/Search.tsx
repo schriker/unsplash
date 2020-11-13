@@ -32,6 +32,7 @@ const Search = () => {
     e.preventDefault();
     if (inputText.length >= 3) {
       history.push(`/search/${inputText}`);
+      setInputText('');
     }
   };
 
@@ -58,7 +59,10 @@ const Search = () => {
         )}
       </form>
       {inputText.length >= 3 && autocomplete && (
-        <SearchAutocomplete autocomplete={autocomplete} />
+        <SearchAutocomplete
+          clearForm={() => setInputText('')}
+          autocomplete={autocomplete}
+        />
       )}
     </div>
   );

@@ -1,9 +1,14 @@
+.search {
+  position: relative;
+  margin: 40px 0 0 0;
+}
+
 .search form {
   position: relative;
 }
 
 .search input {
-  color: #505050;
+  color: #848484;
   width: 100%;
   border: 0;
   border-radius: 3px;
@@ -17,9 +22,9 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-button {
+.search button {
   cursor: pointer;
-  color: #505050;
+  color: #848484;
   background-color: transparent;
   border: 0;
   position: absolute;
