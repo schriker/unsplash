@@ -8,6 +8,7 @@ import searchPhotos from 'api/searchPhotos';
 import SearchHeader from 'components/SearchHeader/SearchHeader';
 import PhotoThumbnail from 'components/PhotoThumbnail/PhotoThumbnail';
 import { useInView } from 'react-intersection-observer';
+import random from 'helpers/random';
 
 const SearchPage = () => {
   const breakpointColumnsObj = {
@@ -17,8 +18,10 @@ const SearchPage = () => {
     500: 1,
   };
   const { query } = useParams<{ query: string }>();
-  const [page, setPage] = useState<number>();
-  const { ref, inView } = useInView();
+  const [page, setPage] = useState<number>(1);
+  const { ref, inView } = useInView({
+    rootMargin: '0px 0px 300px 0px',
+  });
   const [photos, setPhotos] = useState<PhotoType[] | null>(null);
   const [backgroundPhoto, setBackgroundPhoto] = useState<PhotoType | null>(
     null
@@ -37,14 +40,14 @@ const SearchPage = () => {
             setBackgroundPhoto(prevValue ? prevValue[0] : response[0]);
             return prevValue ? [...prevValue, ...response] : response;
           });
+        } else {
+          setPhotos([]);
         }
       } catch (error) {
         console.log("Couldn't fetch photos!");
       }
     };
-    if (page) {
-      fetchPhoto();
-    }
+    fetchPhoto();
   }, [query, page]);
 
   useEffect(() => {
@@ -54,9 +57,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (inView) {
-      setPage((prevValue) => {
-        return prevValue ? prevValue + 1 : 1;
-      });
+      setPage((prevValue) => prevValue + 1);
     }
   }, [inView]);
 
@@ -68,19 +69,27 @@ const SearchPage = () => {
       <SearchHeader backgroundPhoto={backgroundPhoto} />
       <div className={styles.wrapper}>
         <h1>{query}</h1>
-        {photos && (
-          <div className={styles.grid}>
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column"
-            >
-              {photos.map((photo, index) => (
-                <PhotoThumbnail key={index} photo={photo} />
-              ))}
-            </Masonry>
-          </div>
-        )}
+        <div className={styles.grid}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {photos
+              ? photos.map((photo, index) => (
+                  <PhotoThumbnail key={index} photo={photo} index={index} />
+                ))
+              : [...Array(10)].map((_, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      backgroundColor: '#e3e3e3',
+                      height: `${random(300, 600)}px`,
+                    }}
+                  ></div>
+                ))}
+          </Masonry>
+        </div>
       </div>
       <div style={{ height: '20px' }} ref={ref}></div>
     </div>

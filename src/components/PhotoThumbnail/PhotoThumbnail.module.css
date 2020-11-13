@@ -1,8 +1,18 @@
-.wrapper { 
+.wrapper {
   position: relative;
+  transition: all ease 0.2s;
 }
 
-.wrapper > div {
+.wrapper:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.wrapper:hover .author {
+  opacity: 1;
+}
+
+.wrapper div:first-child {
   top: 0;
   left: 0;
   position: absolute !important;
@@ -11,5 +21,22 @@
 
 .wrapper img {
   position: relative;
+  z-index: 998;
+}
+
+.author {
+  transition: all ease 0.2s;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
   z-index: 999;
+  font-size: 12px;
+}
+
+.author img {
+  border-radius: 50%;
+  margin-right: 5px;
 }
