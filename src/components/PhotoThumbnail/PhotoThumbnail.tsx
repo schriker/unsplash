@@ -12,17 +12,20 @@ const PhotoThumbnail: React.FunctionComponent<PhotoThumbnailPropsType> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <Blurhash
+      {photo.blur_hash.length >= 6 && <Blurhash
         hash={photo.blur_hash}
         width="100%"
         height="100%"
         resolutionX={32}
         resolutionY={32}
         punch={1}
-      />
+      />}
       <img
+        loading="lazy"
+        width={photo.width}
+        height={photo.height}
         src={photo.urls.regular}
-        alt={photo.description || photo.alt_description}
+        alt=""
       />
     </div>
   );

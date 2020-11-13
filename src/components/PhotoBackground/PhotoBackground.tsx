@@ -14,14 +14,16 @@ const Photo: React.FunctionComponent<PhotoPropsType> = ({ photo }) => {
 
   return (
     <div className={styles.photo}>
-      <Blurhash
-        hash={photo.blur_hash}
-        width="100%"
-        height="100%"
-        resolutionX={32}
-        resolutionY={32}
-        punch={1}
-      />
+      {photo.blur_hash.length >= 6 && (
+        <Blurhash
+          hash={photo.blur_hash}
+          width="100%"
+          height="100%"
+          resolutionX={32}
+          resolutionY={32}
+          punch={1}
+        />
+      )}
       <picture>
         <source
           media="(max-width: 200px)"
