@@ -26,6 +26,7 @@ export type PhotoUser = {
   first_name: string;
   last_name: string;
   twitter_username: string;
+  location: string;
   profile_image: {
     small: string;
     medium: string;

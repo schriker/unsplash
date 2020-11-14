@@ -9,6 +9,8 @@ import SearchHeader from 'components/SearchHeader/SearchHeader';
 import PhotoThumbnail from 'components/PhotoThumbnail/PhotoThumbnail';
 import { useInView } from 'react-intersection-observer';
 import random from 'helpers/random';
+import LightBox from 'components/LightBox/LightBox';
+import { useTypedSelector } from 'store/rootReducer';
 
 const SearchPage = () => {
   const breakpointColumnsObj = {
@@ -19,13 +21,14 @@ const SearchPage = () => {
   };
   const { query } = useParams<{ query: string }>();
   const [page, setPage] = useState<number>(1);
-  const { ref, inView } = useInView({
-    rootMargin: '0px 0px 300px 0px',
-  });
   const [photos, setPhotos] = useState<PhotoType[] | null>(null);
+  const lightBox = useTypedSelector((state) => state.lightBox);
   const [backgroundPhoto, setBackgroundPhoto] = useState<PhotoType | null>(
     null
   );
+  const { ref, inView } = useInView({
+    rootMargin: '0px 0px 300px 0px',
+  });
 
   useEffect(() => {
     const fetchPhoto = async () => {
@@ -67,6 +70,7 @@ const SearchPage = () => {
         <title>{`${process.env.REACT_APP_TITLE} - Search: ${query}`}</title>
       </Helmet>
       <SearchHeader backgroundPhoto={backgroundPhoto} />
+      {lightBox.isOpen && <LightBox />}
       <div className={styles.wrapper}>
         <h1>{query}</h1>
         <div className={styles.grid}>
