@@ -49,13 +49,13 @@
 
 .author span {
   text-transform: capitalize;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .photo {
   position: relative;
   width: calc(100% - 200px);
-  margin: 100px;
+  margin: 70px 100px 50px 70px;
 }
 
 .photo div:first-child {

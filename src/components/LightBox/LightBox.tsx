@@ -16,11 +16,17 @@ const LightBox = () => {
   return (
     lightBox.photo && (
       <div className={styles.wrapper}>
-        <div onClick={() => dispatch(closeLightBox())} className={styles.backdrop}></div>
+        <div
+          onClick={() => dispatch(closeLightBox())}
+          className={styles.backdrop}
+        ></div>
         <div className={styles.header}>
           <div className={styles.author}>
             <img src={lightBox.photo.user.profile_image.small} alt="" />
             <span>{lightBox.photo.user.name}</span>
+            {lightBox.photo.location?.name || lightBox.photo.user.location ? (
+              <span>-</span>
+            ) : null}
             <span>
               {lightBox.photo.location?.name || lightBox.photo.user.location}
             </span>
